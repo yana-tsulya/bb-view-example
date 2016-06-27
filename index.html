@@ -6,9 +6,12 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-  <ul id="contacts">
+  <main id="contacts">
 
-  </ul>
+    <ul class="contacts-list">
+
+    </ul>
+  </main>
 
   <script id="contactTemplate" type="text/template">
       <img src="<%= photo %>" alt="<%= name %>" />
@@ -18,6 +21,7 @@
           <dt>Tel:</dt><dd><%= tel %></dd>
           <dt>Email:</dt><dd><a href="mailto:<%= email %>"><%= email %></a></dd>
       </dl>
+      <button class="js-delete-contact">Delete Contact</button>
   </script>
   
 <script src="build/js/build.js"></script>

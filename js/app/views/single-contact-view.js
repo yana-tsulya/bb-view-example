@@ -1,24 +1,39 @@
-define('views/single-contact-view',[
-  'jquery',
-  'backbone',
-  'underscore'
-], function(
-  $,
-  BB,
-  _
-){
-  var ContactView = BB.View.extend({
-       tagName: "article",
-       className: "contact-container",
-       template: $("#contactTemplate").html(),
+define('views/single-contact-view', [
+    'jquery',
+    'backbone',
+    'underscore'
+], function ($,
+             BB,
+             _) {
+    var ContactView = BB.View.extend({
+        tagName: "li",
+        className: "contact-container",
+        template: $("#contactTemplate").html(),
 
-       render: function () {
-           var tmpl = _.template(this.template);
+        events: {
+            "click .js-delete-contact": "delete"
+        },
 
-           $(this.el).html(tmpl(this.model.toJSON()));
-           return this;
-       }
-   });
+        initialize: function() {
+            this.listenTo(this.model, "change", this.render);
+        },
 
-   return ContactView;
+        render: function () {
+            var tmpl = _.template(this.template);
+
+            $(this.el).html(tmpl(this.model.toJSON()));
+            return this;
+        },
+
+        delete: function() {
+            var conf = confirm("Are you sure want to delete this item?");
+            if (conf) {
+                this.remove();
+                // this.model.destroy();
+            }
+        }
+
+    });
+
+    return ContactView;
 });

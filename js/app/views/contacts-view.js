@@ -31,7 +31,7 @@ define('views/contacts-view', [
             var contactView = new ContactView({
                 model: item
             });
-            this.$el.append(contactView.render().el);
+            this.$(".contacts-list").append(contactView.render().el);
         }
     });
 
