@@ -3,7 +3,7 @@ define('collections/contacts', [
   'models/single-contact'
 ], function(
   BB,
-  ContactsModel
+  ContactModel
 ) {
 
   var contacts = [
@@ -18,7 +18,7 @@ define('collections/contacts', [
   ];
 
   var ContactsCollection = BB.Collection.extend({
-      model: ContactsModel
+      model: ContactModel
   });
 
   var Contacts = new ContactsCollection(contacts);

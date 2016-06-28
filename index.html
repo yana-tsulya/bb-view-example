@@ -13,9 +13,24 @@
     </ul>
   </main>
 
+<div class="hidden" id="dataContactTemplate">
+  <li>
+      <img data-img src="" alt="" />
+      <h1 data-name>test</h1>
+      <p data-type></p>
+      <div data-address></div>
+      <dl>
+          <dt>Tel:</dt><dd data-tel></dd>
+          <dt>Email:</dt><dd><a data-email href="mailto:<%= email %>"></a></dd>
+      </dl>
+      <button class="js-delete-contact">Delete Contact</button>
+  </li>
+</div>
+
   <script id="contactTemplate" type="text/template">
       <img src="<%= photo %>" alt="<%= name %>" />
-      <h1><%= name %><span><%= type %></span></h1>
+      <h1><%= name %></h1>
+      <p><%= type %></p>
       <div><%= address %></div>
       <dl>
           <dt>Tel:</dt><dd><%= tel %></dd>
@@ -23,7 +38,7 @@
       </dl>
       <button class="js-delete-contact">Delete Contact</button>
   </script>
-  
+
 <script src="build/js/build.js"></script>
 
 </body>

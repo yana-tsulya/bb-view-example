@@ -3,12 +3,14 @@ define('views/contacts-view', [
   'backbone',
   'underscore',
   'collections/contacts',
+  'models/single-contact',
   'views/single-contact-view'
 ], function functionName(
   $,
   BB,
   _,
   ContactsCollection,
+  ContactModel,
   ContactView
 ) {
 
