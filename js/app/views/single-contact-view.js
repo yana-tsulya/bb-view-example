@@ -38,7 +38,7 @@ define('views/single-contact-view', [
             var conf = confirm("Are you sure want to delete this item?");
             if (conf) {
                 this.remove();
-                // this.model.destroy();
+                this.model.destroy();
             }
         }
 

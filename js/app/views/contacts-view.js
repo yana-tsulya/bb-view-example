@@ -1,20 +1,19 @@
 define('views/contacts-view', [
-  'jquery',
-  'backbone',
-  'underscore',
-  'collections/contacts',
-  'models/single-contact',
-  'views/single-contact-view'
-], function functionName(
-  $,
-  BB,
-  _,
-  ContactsCollection,
-  ContactModel,
-  ContactView
-) {
+    'jquery',
+    'backbone',
+    'underscore',
+    'collections/contacts',
+    'models/single-contact',
+    'views/single-contact-view'
+], function (
+    $,
+    BB,
+    _,
+    ContactsCollection,
+    ContactModel,
+    ContactView) {
 
-  var ContactsView = BB.View.extend({
+    var ContactsView = BB.View.extend({
         el: $("#contacts"),
 
         initialize: function () {
@@ -34,7 +33,7 @@ define('views/contacts-view', [
                 model: item
             });
             this.$(".contacts-list").append(contactView.render().el);
-        }
+        }        
     });
 
     var contacts = new ContactsView();
