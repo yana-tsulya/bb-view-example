@@ -18,7 +18,15 @@ define('collections/contacts', [
   ];
 
   var ContactsCollection = BB.Collection.extend({
-      model: ContactModel
+      model: ContactModel,
+
+      initialize : function () {
+          this.listenEvents();
+      },
+
+      listenEvents : function () {
+          this.on('removeContact', function (model) {this.remove(model)}, this);
+      }
   });
 
   var Contacts = new ContactsCollection(contacts);

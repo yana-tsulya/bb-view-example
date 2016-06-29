@@ -6,40 +6,46 @@ define('views/single-contact-view', [
              BB,
              _) {
     var ContactView = BB.View.extend({
-        tagName: "li",
-        className: "contact-container",
-        // template: $("#contactTemplate").html(),
-
-        template: $("#dataContactTemplate").html(),
 
         events: {
-            "click .js-delete-contact": "delete"
+            "click .js-delete-contact": "deleteContact"
         },
 
-        initialize: function() {
+        initialize: function(config) {
+
+            if(config.template){
+                this.template = config.template;
+            }
+
             this.listenTo(this.model, "change", this.render);
+            this.render();
+
         },
 
-        // render: function () {
-        //     var tmpl = _.template(this.template);
+         //render: function () {
+         //    var tmpl = _.template(this.template);
+         //
+         //    this.$el.html(tmpl(this.model.toJSON()));
+         //    return this;
+         //},
         //
-        //     $(this.el).html(tmpl(this.model.toJSON()));
-        //     return this;
-        // },
-
         render: function() {
-          $(this.el).html(this.template);
 
-          $(this.el).find('[data-name]').text(this.model.get("name"));
+          this.$el.find('[data-name]').text(this.model.get("name"));
+
           return this;
         },
 
-        delete: function() {
+        deleteContact: function() {
             var conf = confirm("Are you sure want to delete this item?");
             if (conf) {
                 this.remove();
-                this.model.destroy();
+                this.model.trigger('removeContact', this.model);
+                //this.model.destroy();
             }
+        },
+        sync : function () {
+
         }
 
     });
