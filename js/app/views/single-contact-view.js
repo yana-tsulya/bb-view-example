@@ -22,19 +22,19 @@ define('views/single-contact-view', [
 
         },
 
-         //render: function () {
-         //    var tmpl = _.template(this.template);
-         //
-         //    this.$el.html(tmpl(this.model.toJSON()));
-         //    return this;
-         //},
+         render: function () {
+             var tmpl = _.template(this.template);
+
+             this.$el.html(tmpl(this.model.toJSON()));
+             return this;
+         },
+
+        //render: function() {
         //
-        render: function() {
-
-          this.$el.find('[data-name]').text(this.model.get("name"));
-
-          return this;
-        },
+        //  this.$el.find('[data-name]').text(this.model.get("name"));
+        //
+        //  return this;
+        //},
 
         deleteContact: function() {
             var conf = confirm("Are you sure want to delete this item?");

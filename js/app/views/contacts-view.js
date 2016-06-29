@@ -22,8 +22,8 @@ define('views/contacts-view', [
 
         initialize: function () {
             this.collection = ContactsCollection;
-            this.contactTpl = this.$el.find('li')[0].outerHTML;
-            //this.contactTpl = $('#contactTemplate').html();
+            //this.contactTpl = this.$el.find('li')[0].outerHTML;
+            this.contactTpl = $('#contactTemplate').html();
             this.$(".contacts-list").empty();
             this.render();
             this.listenEvents();
@@ -42,8 +42,8 @@ define('views/contacts-view', [
 
         renderContact: function (item) {
             var contactView = new ContactView({
-                //template : this.contactTpl,
-                el : this.contactTpl,
+                template : this.contactTpl,
+                //el : this.contactTpl,
                 model: item
             });
             this.$(".contacts-list").append(contactView.$el);
@@ -53,7 +53,7 @@ define('views/contacts-view', [
 
             e.preventDefault();
 
-            var contact = this.$el.find('[data-contact]').val();
+            var contact = this.$('[data-contact]').val();
 
             this.collection.add({ id: Math.random(), name: contact, address: "1, a street, a town, a city, AB12 3CD", tel: "0123456789", email: "anemail@me.com", type: "family" });
         }
